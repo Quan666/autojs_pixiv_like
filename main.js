@@ -1,4 +1,4 @@
-
+sleep(3000)
 while (true) {
     //放大图片
     click(500, 380);
@@ -19,14 +19,33 @@ while (true) {
 
     //点击保存
     click(574 + 10, 116 + 10);
-    sleep(500);
+    sleep(500)
+    while(true){
+        // 滑动到下一张
+        var res = scrollDown()
+        //swipe(800, 100, 100, 100, 500)
+        // 没有下一张退出
+        if (!res) {
+            //alert("结束！")
+            break;
+         }
+         //点击三个点
+         click(970 + 10, 80 + 10);
+         sleep(500)
+         className("android.widget.ListView").waitFor()
 
+         //点击保存
+         click(574 + 10, 116 + 10);
+         sleep(500)
+    }
+    
     //点击返回
     click(0 + 10, 80 + 10);
     sleep(500);
 
     // 滑动到下一张
-    var res = swipe(100, 100, 800, 100, 500)
+    var res = scrollUp()
+    //swipe(100, 100, 800, 100, 500)
     // 没有下一张退出
     if (!res) {
         alert("结束！")
